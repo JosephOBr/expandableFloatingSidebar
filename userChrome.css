@@ -1,0 +1,69 @@
+/* Floating, autohide sidebar */
+
+/* sidebar styles*/
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
+
+/*remove tabs*/
+#TabsToolbar  {
+  visibility: collapse;
+}
+
+#sidebar-box {
+  --bar-width: 15px;
+
+  position: absolute !important;
+  left: calc(-var(--bar-width));
+  top: 45%;
+  min-width: var(--bar-width) !important;
+  max-width: var(--bar-width) !important;
+  height: 5%;
+  z-index: 9999;
+
+  transition: all 0.8s;
+  opacity: 0.5;
+  border-right: calc(2*var(--bar-width)) solid #055;
+  border-radius: 0px 25px 25px 0px;
+  overflow-x: hidden !important;
+  #box-shadow: 0px 0px 10px 1px #111100;    
+}
+
+#sidebar-box:hover {
+  --expanded-width: 300px;
+  height: 50%;
+  top: 25%;
+  left: 0px;
+  min-width: var(--expanded-width) !important;
+  max-width: var(--expanded-width) !important;
+  
+  border-right: var(--bar-width) solid #0ff;
+  opacity: 1;
+}
+
+#sidebar-box:hover #sidebar-header {
+  min-width: var(--expanded-width) !important;
+  max-width: var(--expanded-width) !important;
+}
+
+/* #sidebar-header is hidden by default, change "none" to "inherit" to restore it. */
+#sidebar-header {
+  display: none;
+  min-width: var(--bar-width) !important;
+  max-width: var(--bar-width) !important;
+  overflow: hidden !important;
+}
+
+.browserContainer {
+  position: relative;
+  background-color: black;
+}
+
+.sidebar-splitter, 
+#sidebar-reverse-position, 
+#sidebar-extensions-separator {display: none;}
+
+#nav-bar{
+  height: 40px;
+  transition: all 0.2s;
+}
+
+
